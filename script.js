@@ -24,7 +24,7 @@ metricButton.addEventListener('click', function (event){
 });
 
 function weatherFunction(){
-    const APIKey = 'f60a557facbf4cdd6adae3b1795ac49f';
+    const APIKey = 'APIKey';
     const city = document.querySelector('.search-box input').value;
 
     if(city === '') return;
