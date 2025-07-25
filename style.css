@@ -7,11 +7,33 @@
 }
 
 body{
-    height: 100vh;
+    background-color: #06283D;
+    width: 400px;
+    margin: 7rem auto;
+}
+
+main{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #06283D;
+}
+
+.units{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0 0 1rem 0;
+
+}
+
+.units button{
+    margin-left: 20px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 15px;
+    font-weight: bold;
+    color: #06283D;
 }
 
 .container{
@@ -90,6 +112,14 @@ body{
     font-weight: bolder;
     margin-top: 30px;
     margin-left: -16px;
+}
+
+.weather-box .feels-like{
+    color: #06283D;
+    font-size: 1rem;
+    font-weight: bolder;
+    text-align: center;
+    margin: 6px 0 0 0;
 }
 
 .weather-box .temperature span{

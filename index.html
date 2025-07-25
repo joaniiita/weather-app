@@ -11,42 +11,50 @@
     <title>Weather App</title>
 </head>
 <body>
-    <div class="container">
-        <div class="search-box">
-            <i class="bi bi-geo-alt-fill"></i>
-            <input type="text" name="location" id="location" placeholder="Enter your location">
-            <button class="bi bi-search"></button>
-        </div>
-
-        <div class="not-found">
-            <img src="images/404.png" alt="Not found Location" >
-            <p>Oops! Invalid location</p>
-        </div>
-
-        <div class="weather-box">
-            <img src="" alt="">
-            <p class="temperature"></p>
-            <p class="description"></p>
-        </div>
-
-        <div class="weather-details">
-            <div class="humidity">
-                <i class="bi bi-water"></i>
-                <div class="text">
-                    <span></span>
-                    <p>Humidity</p>
-                </div>
-            </div>
-
-            <div class="wind">
-                <i class="bi bi-wind"></i>
-                <div class="text">
-                    <span></span>
-                    <p>Wind Speed</p>
-                </div>
-            </div>
-        </div>
+    <div class="units">
+        <button id="metric" value="metric">°C</button>
+        <button id="imperial" value="imperial">°F</button>
     </div>
+    <main>
+        <div class="container">
+            <div class="search-box">
+                <i class="bi bi-geo-alt-fill"></i>
+                <input type="text" name="location" id="location" placeholder="Enter your location">
+                <button class="bi bi-search"></button>
+            </div>
+
+            <div class="not-found">
+                <img src="images/404.png" alt="Not found Location" >
+                <p>Oops! Invalid location</p>
+            </div>
+
+            <div class="weather-box">
+                <img src="" alt="">
+                <p class="temperature"></p>
+                <p class="description"></p>
+                <p class="feels-like">Feels Like: <span id="feelsLike"></span></p>
+            </div>
+
+            <div class="weather-details">
+                <div class="humidity">
+                    <i class="bi bi-water"></i>
+                    <div class="text">
+                        <span></span>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+
+                <div class="wind">
+                    <i class="bi bi-wind"></i>
+                    <div class="text">
+                        <span></span>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>

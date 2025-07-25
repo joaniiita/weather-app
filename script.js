@@ -4,14 +4,32 @@ const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 
-search.addEventListener('click', () => {
+let unit = 'metric';
 
+const imperialButton = document.getElementById("imperial");
+const metricButton = document.getElementById('metric');
+
+search.addEventListener('click', weatherFunction);
+
+imperialButton.addEventListener('click', function (event){
+    const imperialValue = event.target.value;
+    unit = imperialValue;
+    weatherFunction();
+});
+
+metricButton.addEventListener('click', function (event){
+    const metricValue = event.target.value;
+    unit = metricValue;
+    weatherFunction();
+});
+
+function weatherFunction(){
     const APIKey = 'f60a557facbf4cdd6adae3b1795ac49f';
     const city = document.querySelector('.search-box input').value;
 
     if(city === '') return;
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${APIKey}`)
         .then(response => response.json())
         .then(json => {
             if (json.code === '404'){
@@ -31,6 +49,8 @@ search.addEventListener('click', () => {
             const description = document.querySelector('.weather-box .description');
             const humidity = document.querySelector('.weather-details .humidity span');
             const wind = document.querySelector('.weather-details .wind span');
+            const feelsLike = document.getElementById('feelsLike')
+
 
             switch (json.weather[0].main){
                 case 'Clear':
@@ -52,10 +72,20 @@ search.addEventListener('click', () => {
                     image.src = '';
             }
 
-            temperature.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
+            if (unit === 'metric'){
+                temperature.innerHTML = `${Math.round(parseFloat(json.main.temp))}<span>°C</span>`;
+                feelsLike.innerHTML = `${Math.round(parseFloat(json.main.feels_like))}<span>°C</span>`
+            } else {
+                feelsLike.innerHTML = `${Math.round(parseFloat(json.main.feels_like))}<span>°F</span>`
+                temperature.innerHTML = `${Math.round(parseFloat(json.main.temp))}<span>°F</span>`;
+            }
+
+
             description.innerHTML = `${json.weather[0].description}`;
             humidity.innerHTML = `${json.main.humidity}%`;
             wind.innerText = `${parseInt(json.wind.speed)} km/h`;
+
+
 
             weatherBox.style.display = '';
             weatherDetails.style.display = '';
@@ -64,6 +94,5 @@ search.addEventListener('click', () => {
             container.style.height= '609px';
 
             console.log(json);
-    });
-
-});
+        });
+}
